@@ -22,7 +22,8 @@ body {
   transform: translateY(100%);
 }
 
-.box-container {
+.slide-container {
+  position: relative;
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
@@ -30,12 +31,14 @@ body {
   background-color: darkcyan;
   height: 500px;
   width: 600px;
+  overflow: hidden;
 }
 
-.box {
+.slide {
+  position: absolute;
   background-color: goldenrod;
-  height: 150px;
-  width: 200px;
+  height: 200px;
+  width: 300px;
   border: 1px solid white;
 }
 
