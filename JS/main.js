@@ -1,20 +1,30 @@
 // import {example} from "./modules/example.js"
 const slideContainer = document.querySelector(".slide-track");
 const slides = Array.from(slideContainer.children);
+const images = [
+  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+
+  "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80",
+
+  "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+];
 
 const slideWidth = slides[0].getBoundingClientRect().width;
-console.log(slideWidth);
+
 
 const setSlidePosition = (slide, index) => {
   slide.style.left = slideWidth * index + "px";
 };
 
 slides.forEach(setSlidePosition);
+slides.forEach((slide, index) => {
+  slide.style.backgroundImage = `url(${images[index]})`;
+});
 
 const MasterTimeline = gsap.timeline({defaults: {duration:1,}})
 MasterTimeline
 .to(".main", {y:"-100%", x:0, opacity:1 , ease:"expo.out",stagger:0.25, delay:1})
-.to(".slide-container", {backgroundColor:"#aaa", ease:"none" })
+.to(".slide-container", { ease:"none",onComplete: () => imageTl.restart()})
 .to(".slide-track", {opacity:0,scale:0, ease:"power4.out",})
 .to(".slide-track", {opacity:1,scale:1, ease:"power4.out",})
 .to(".slide", {y:0,opacity:1, ease:"power4.out",onComplete: () => slideTimeline.restart()},"<-0.5")
@@ -49,5 +59,13 @@ slideTimeline
 .to(".slide", {x:-(slideWidth * 2), ease:"expo.inOut",stagger:0.25})
 .to(".slide", {x:0, ease:"expo.inOut", stagger:-0.25, delay:1, })
 
+let imageTl = gsap.timeline().pause();
 
-
+images.forEach((image) => {
+  let tl = gsap.timeline()
+  tl.set('.slide-container', {delay:1,duration:2, backgroundImage:`url(${image})`})
+  tl.set('.slide-container', {duration:2, backgroundImage:`url(${image})`})
+  tl.set('.slide-container', {delay:1,duration:2, backgroundImage:`url(${image})`})
+  tl.set('.slide-container', {delay:1,duration:2, backgroundImage:`url(${images[0]})`})
+  imageTl.add(tl)
+})
