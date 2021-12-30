@@ -1,9 +1,17 @@
-.main{
+body{
   display:grid;
   height: 100vh;
   place-content: center;
   background-color:#cecc;
   
+}
+.main{
+  border: 1px solid #ccc;
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+  opacity: 0;
+  transform: translateY(100%);
 }
 
 .box-container{
@@ -14,6 +22,9 @@
   background-color: darkcyan;
   height: 500px;
   width: 600px;
+
+
+
 }
 
 .box{
@@ -24,8 +35,10 @@
 }
 
 nav{
+  position: relative;
   display:flex;
   margin: -8em auto;
+  z-index: 1;
 }
 
 .button{
