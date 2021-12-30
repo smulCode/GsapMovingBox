@@ -54,7 +54,7 @@ body{
 nav{
   position: relative;
   display:flex;
-  margin: -8em auto;
+  margin: -7em auto;
   z-index: 1;
 }
 
@@ -63,7 +63,7 @@ nav{
   padding: 1px;
   height:max-content;
   width:30px;
-  background-color:coral;
+  background-color:#cecece;
   // border-top: 12px solid white;
   margin: 1px;
   border-radius: 3%;
@@ -72,10 +72,11 @@ nav{
 
 .nav-indicator{
   position: absolute;
-  top: -3px;
+  top: -1.5px;
   left: 0;
   background-color:white;
   width:30px;
-  padding: 1.5px;
+  padding: 2px;
   border-radius: 1px;
+  z-index: 3;
 }
