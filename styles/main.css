@@ -11,6 +11,7 @@ body {
   height: 100vh;
   place-content: center;
   background-color: #fff;
+  overflow: hidden;
 }
 
 .main {
@@ -26,9 +27,10 @@ body {
   position: relative;
   display: grid;
   height: 500px;
-  width: 100vw;
+  width: 800px;
   padding: 20%;
   overflow: hidden;
+  border-radius: 1%;
   transition: all 0.5s ease-in-out;
   background-position: center;
   background-repeat: no-repeat;
