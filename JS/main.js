@@ -28,11 +28,11 @@ slideContainer.style.backgroundImage = `url(${images[0]})`;
 
 const MasterTimeline = gsap.timeline({defaults: {duration:1,}})
 MasterTimeline
-.to(".main", {y:"-100%", x:0, opacity:1 , ease:"expo.out", delay:1, onComplete: () => imageTl.restart()})
+.to(".main", {y:"-100%", x:0, opacity:1 , ease:"power4.out", delay:1, onComplete: () => imageTl.restart()})
 .to(".slide-track", {opacity:0,scale:0, ease:"power4.out",})
 .to(".slide-track", {opacity:1,scale:1, ease:"power4.out",})
 .to(".slide", {y:0,opacity:1, ease:"power4.out",onComplete: () => slideTimeline.restart()},"<-0.5")
-.to(".button", {opacity:1, ease:"power4.out"},"<")
+.to(".button", {opacity:1, ease:"power4.in"},"<")
 .to(".nav-indicator", {delay: 0.5, stagger:0.25,
   keyframes: {
     x: [0, 0, 32, 32, 32],
